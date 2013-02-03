@@ -7,7 +7,7 @@ module WBench
     Capybara.register_driver(:selenium_chrome) { |app| Capybara::Selenium::Driver.new(app, :browser => :chrome) }
     Capybara.current_driver = :selenium_chrome
 
-    def self.run(url, loops=10)
+    def self.run(url, loops=25)
       @results = Results.new(url, loops)
 
       loops.times do
