@@ -22,22 +22,17 @@ $ wbench https://www.desktoppr.co/
 
 ### Ruby API
 
-You can programatically run the tests using:
+You can programatically run the benchmarks. Simply specify the URL and
+optionally the amount of runs.
 
 ```bash
 
 require 'wbench'
 
-url   = 'https://www.google.com/'
-loops = 10
-
-results = WBench::Test.run(url, loops) # => WBench::Results
+results = WBench::Test.run('https://www.google.com/', 10) # => WBench::Results
 ```
 
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+## TODO
+- Add ability to [gist](https://gist.github.com/) results
+- Add ability to use different browsers (firefox and IE)
+- Allow stats collection through the ruby API.
