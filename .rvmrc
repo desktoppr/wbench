@@ -1,1 +1,1 @@
-rvm use @website_benchmarker --create
+rvm use @wbench --create

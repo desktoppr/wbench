@@ -1,4 +1,4 @@
-module WebsiteBenchmarker
+module WBench
   class TimingHash < Hash
     def initialize(json)
       # Remove 0 values as they indicate events that didn't occur

@@ -20,16 +20,16 @@ class RowFormatter
   end
 
   def fastest_s
-    "#{@values.min}ms".ljust(10)
+    "#{@values.min}ms".ljust(10).colorize(:green)
   end
 
   def slowest_s
-    "#{@values.max}ms".ljust(10)
+    "#{@values.max}ms".ljust(10).colorize(:red)
   end
 
   def median_s
     median = @values[ @values.length / 2 ]
 
-    "#{median}ms".ljust(10)
+    "#{median}ms".ljust(10).colorize(:blue)
   end
 end

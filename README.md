@@ -1,24 +1,38 @@
-# WebsiteBenchmarker
+# WBench
 
-TODO: Write a gem description
+WBench is a tool that uses the HTML5 performance timing API to benchmark end user load times for websites.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'website_benchmarker'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install website_benchmarker
+```bash
+$ gem install wbench
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### Command Line
+
+Simply enter the URL of a website you want to test. The site will be loaded in the Chrome browser 10 times.
+
+```bash
+$ wbench https://www.desktoppr.co/
+```
+
+![Example Usage Output](https://github.com/desktoppr/wbench/raw/master/example.png)
+
+### Ruby API
+
+You can programatically run the tests using:
+
+```bash
+
+require 'wbench'
+
+url   = 'https://www.google.com/'
+loops = 10
+
+results = WBench::Test.run(url, loops) # => WBench::Results
+```
 
 ## Contributing
 

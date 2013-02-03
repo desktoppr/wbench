@@ -1,6 +1,9 @@
-module WebsiteBenchmarker
+module WBench
   class Results
-    def initialize
+    def initialize(url, loops)
+      @url     = url
+      @loops   = loops
+      @time    = Time.now.asctime
       @results = {}
     end
 
@@ -19,7 +22,9 @@ module WebsiteBenchmarker
     private
 
     def heading_s
-      "\n" \
+      "\nTesting #{@url}" \
+      "\nAt #{@time}" \
+      + "\n#{@loops} loops\n" \
       + ''.center(35) \
       + 'Fastest'.ljust(10) \
       + 'Median'.ljust(10) \
