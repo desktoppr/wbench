@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(dir) unless $LOAD_PATH.include?(dir)
 require 'wbench'
 
 if url = ARGV[0]
-  puts WBench::Test.run(url)
+  puts WBench::Benchmark.run(url)
 else
   abort 'Please provide a URL to benchmark'
 end

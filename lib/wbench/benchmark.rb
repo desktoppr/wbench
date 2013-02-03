@@ -1,7 +1,7 @@
 require 'capybara'
 
 module WBench
-  class Test
+  class Benchmark
     extend Capybara::DSL
 
     Capybara.register_driver(:selenium_chrome) { |app| Capybara::Selenium::Driver.new(app, :browser => :chrome) }

@@ -12,7 +12,7 @@ $ gem install wbench
 
 ### Command Line
 
-Simply enter the URL of a website you want to test. The site will be loaded in the Chrome browser 10 times.
+Simply enter the URL of a website you want to benchmark. The site will be loaded in the Chrome browser 10 times.
 
 ```bash
 $ wbench https://www.desktoppr.co/
@@ -29,7 +29,7 @@ optionally the amount of runs.
 
 require 'wbench'
 
-results = WBench::Test.run('https://www.google.com/', 10) # => WBench::Results
+results = WBench::Benchmark.run('https://www.google.com/', 10) # => WBench::Results
 ```
 
 ## TODO
