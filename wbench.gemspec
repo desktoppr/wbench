@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = WBench::VERSION
   gem.authors       = ["Mario Visic"]
   gem.email         = ["mario@mariovisic.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{WBench is a tool that uses the HTML5 performance timing API to benchmark end user load times for websites.}
+  gem.summary       = %q{Benchmark website loading times}
   gem.homepage      = ""
 
   gem.add_dependency 'colorize'
