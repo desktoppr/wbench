@@ -6,7 +6,11 @@ module WBench
     end
 
     def to_s
-      name_s + fastest_s + median_s + slowest_s + std_dev_s
+      if @values.compact.size == 0
+        name_s + no_result_s
+      else
+        name_s + fastest_s + median_s + slowest_s + std_dev_s
+      end
     end
 
     private
@@ -18,6 +22,10 @@ module WBench
       name.gsub!('Dom ', 'DOM ')
       name = "#{name}:"
       name.ljust(35)
+    end
+
+    def no_result_s
+      'Unable to be recorded'.center(40).colorize(:light_red)
     end
 
     def fastest_s

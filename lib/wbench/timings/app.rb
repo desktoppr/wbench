@@ -11,7 +11,9 @@ module WBench
       def result
         response = @http.request(@request)
 
-        (response.header['x-runtime'].to_f*1000).to_i
+        unless response.header['x-runtime'].nil?
+          (response.header['x-runtime'].to_f*1000).to_i
+        end
       end
     end
   end
