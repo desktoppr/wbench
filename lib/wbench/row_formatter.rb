@@ -6,7 +6,7 @@ module WBench
     end
 
     def to_s
-      name_s + fastest_s + median_s + slowest_s
+      name_s + fastest_s + median_s + slowest_s + std_dev_s
     end
 
     private
@@ -32,6 +32,14 @@ module WBench
       median = @values[ @values.length / 2 ]
 
       "#{median}ms".ljust(10).colorize(:blue)
+    end
+
+    def std_dev_s
+      sum = @values.inject(:+)
+      sample_variance = (1/@values.length.to_f*sum)
+      std_dev = Math.sqrt(sample_variance).to_i
+
+      "#{std_dev}ms".ljust(10).colorize(:yellow)
     end
   end
 end

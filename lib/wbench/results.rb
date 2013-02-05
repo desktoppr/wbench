@@ -36,8 +36,9 @@ module WBench
       + 'Fastest'.ljust(10) \
       + 'Median'.ljust(10) \
       + 'Slowest'.ljust(10) \
+      + 'Std Dev'.ljust(10) \
       + "\n" \
-      + '-' * 65 \
+      + '-' * 75 \
     end
 
     def spacer_s
