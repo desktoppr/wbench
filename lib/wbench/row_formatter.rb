@@ -1,8 +1,8 @@
 module WBench
   class RowFormatter
-    def initialize(result)
-      @name   = result.first
-      @values = result.last
+    def initialize(name, values)
+      @name   = name
+      @values = values
     end
 
     def to_s
