@@ -3,13 +3,10 @@ require 'net/http'
 require 'uri'
 require 'capybara'
 
+Capybara.register_driver(:selenium_chrome) { |app| Capybara::Selenium::Driver.new(app, :browser => :chrome) }
+
 module WBench
   class Benchmark
-    include Capybara::DSL
-
-    Capybara.register_driver(:selenium_chrome) { |app| Capybara::Selenium::Driver.new(app, :browser => :chrome) }
-    Capybara.current_driver = :selenium_chrome
-
     def self.run(url, loops=25)
       new(url).run(loops)
     end
@@ -21,22 +18,12 @@ module WBench
     def run(loops)
       @results = Results.new(@url, loops)
 
-      loops.times do
-        Capybara.reset_sessions!
-
-        @results.add(browser_timing, app_response_time)
-      end
+      loops.times { @results.add(browser_timing, app_response_time) }
 
       @results
     end
 
     private
-
-    def visit_page
-      visit @url
-      page.has_css?('body')
-      sleep 0.2
-    end
 
     def app_response_time
       uri = URI.parse(@url)
@@ -49,9 +36,13 @@ module WBench
     end
 
     def browser_timing
-      visit_page
+      session = Capybara::Session.new(:selenium_chrome)
+      session.visit @url
+      session.has_css?('body')
+      sleep 0.2
 
-      timing_json = JSON.parse(page.evaluate_script('JSON.stringify(window.performance.timing)'))
+      timing_json = JSON.parse(session.evaluate_script('JSON.stringify(window.performance.timing)'))
+      session.driver.browser.quit
 
       TimingHash.new(timing_json)
     end
