@@ -1,13 +1,6 @@
-require 'json'
-require 'net/http'
-require 'uri'
-require 'capybara'
-
-Capybara.register_driver(:selenium_chrome) { |app| Capybara::Selenium::Driver.new(app, :browser => :chrome) }
-
 module WBench
   class Benchmark
-    def self.run(url, loops=25)
+    def self.run(url, loops=DEFAULT_LOOPS)
       new(url).run(loops)
     end
 
@@ -36,7 +29,7 @@ module WBench
     end
 
     def browser_timing
-      session = Capybara::Session.new(:selenium_chrome)
+      session = Capybara::Session.new(DRIVER)
       session.visit @url
       session.has_css?('body')
       sleep 0.2
