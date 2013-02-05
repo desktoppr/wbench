@@ -9,12 +9,14 @@ require 'wbench/benchmark'
 require 'wbench/results'
 require 'wbench/timing_hash'
 require 'wbench/row_formatter'
+require 'wbench/timings/app'
+require 'wbench/timings/browser'
 
 module WBench
-  DRIVER = :wbench_browser
+  CAPYBARA_DRIVER = :wbench_browser
   DEFAULT_LOOPS = 25
 
-  Capybara.register_driver(DRIVER) do |app|
+  Capybara.register_driver(CAPYBARA_DRIVER) do |app|
     Capybara::Selenium::Driver.new(app, :browser => :chrome)
   end
 end
