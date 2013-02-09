@@ -11,6 +11,7 @@ require 'wbench/timing_hash'
 require 'wbench/row_formatter'
 require 'wbench/timings/app'
 require 'wbench/timings/browser'
+require 'wbench/timings/latency'
 
 module WBench
   CAPYBARA_DRIVER = :wbench_browser

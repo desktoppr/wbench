@@ -11,10 +11,17 @@ module WBench
         @session.has_css?('body')
         sleep 0.2
 
-        # Here we'll need to inject some JavaScript into the DOM
-        # See the latency.js file.
-        #
-        # JavaScript is a WIP!
+        @session.execute_script(wbench_javascript)
+        @session.evaluate_script('resourceURLs();')
+      end
+
+      private
+
+      def wbench_javascript
+        directory = File.expand_path(File.dirname(__FILE__))
+        file = File.open(File.join(directory, 'latency.js'))
+
+        file.read
       end
     end
   end
