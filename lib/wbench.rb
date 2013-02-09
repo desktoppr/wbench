@@ -14,7 +14,7 @@ require 'wbench/timings/browser'
 
 module WBench
   CAPYBARA_DRIVER = :wbench_browser
-  DEFAULT_LOOPS = 25
+  DEFAULT_LOOPS = 10
 
   Capybara.register_driver(CAPYBARA_DRIVER) do |app|
     Capybara::Selenium::Driver.new(app, :browser => :chrome)
