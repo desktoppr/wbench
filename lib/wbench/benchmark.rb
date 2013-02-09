@@ -1,7 +1,7 @@
 module WBench
   class Benchmark
-    def self.run(url, loops=DEFAULT_LOOPS)
-      new(url).run(loops)
+    def self.run(url, loops=nil)
+      new(url).run(loops || DEFAULT_LOOPS)
     end
 
     def initialize(url)

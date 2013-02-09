@@ -3,9 +3,24 @@
 dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(dir) unless $LOAD_PATH.include?(dir)
 require 'wbench'
+require 'optparse'
+
+options = {}.tap do |options|
+  OptionParser.new do |opts|
+    opts.version = WBench::VERSION
+    opts.banner  = 'Usage: wbench url [options]'
+
+    opts.separator ""
+    opts.separator "Options:"
+
+    opts.on("-l", "--loops [LOOPS]", Integer, "Set number of loops (default: #{WBench::DEFAULT_LOOPS})") do |loops|
+      options[:loops] = loops
+    end
+  end.parse!
+end
 
 if url = ARGV[0]
-  puts WBench::Benchmark.run(url)
+  puts WBench::Benchmark.run(url, options[:loops])
 else
   abort 'Please provide a URL to benchmark'
 end
