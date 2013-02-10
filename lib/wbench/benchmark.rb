@@ -10,15 +10,11 @@ module WBench
     end
 
     def run(loops)
-      @results = Results.new(@url, loops)
-
-      loops.times do
-        @browser.visit do
-          @results.add(app_server_results, browser_results, latency_results)
+      Results.new(@url, loops).tap do |results|
+        loops.times do
+          @browser.visit { results.add(app_server_results, browser_results, latency_results) }
         end
       end
-
-      @results
     end
 
     private

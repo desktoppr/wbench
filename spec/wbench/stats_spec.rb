@@ -43,5 +43,3 @@ describe WBench::Stats do
     its(:std_dev) { should == 2 } # see: http://en.wikipedia.org/wiki/Standard_deviation
   end
 end
-
-

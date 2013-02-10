@@ -14,13 +14,11 @@ module WBench
     def add(app_server, browser, latency)
       browser.each do |key, value|
         @browser[key] ||= []
-
         @browser[key] << value
       end
 
       latency.each do |key, value|
         @latency[key] ||= []
-
         @latency[key] << value
       end
 
