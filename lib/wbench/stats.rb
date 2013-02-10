@@ -1,19 +1,23 @@
 module WBench
   class Stats < SimpleDelegator
     def median
-      self[length / 2]
+      sort[length / 2]
     end
 
     def sum
       inject(:+)
     end
 
+    def mean
+      sum / length.to_f
+    end
+
     def sample_variance
-      (1 / length.to_f*sum)
+      (inject(0) { |variance, value| variance + ((value - mean) ** 2) }) / length
     end
 
     def std_dev
-      Math.sqrt(sample_variance).to_i
+      Math.sqrt(sample_variance)
     end
   end
 end

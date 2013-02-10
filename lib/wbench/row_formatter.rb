@@ -36,7 +36,7 @@ module WBench
     end
 
     def std_dev_s
-      "#{@stats.std_dev}ms".ljust(10).colorize(:yellow)
+      "#{@stats.std_dev.to_i}ms".ljust(10).colorize(:yellow)
     end
   end
 end
