@@ -35,4 +35,3 @@ results = WBench::Benchmark.run('https://www.google.com/', 10) # => WBench::Resu
 ## TODO
 - Add ability to [gist](https://gist.github.com/) results
 - Add ability to use different browsers (firefox and IE)
-- Allow stats collection through the ruby API.

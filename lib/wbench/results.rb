@@ -1,11 +1,13 @@
 module WBench
   class Results
+    attr_accessor :browser, :latency, :app_server
+
     def initialize(url, loops)
-      @url         = url
+      @url        = url
       @loops      = loops
       @time       = Time.now.asctime
       @browser    = {}
-      @latencies  = {}
+      @latency    = {}
       @app_server = []
     end
 
@@ -17,9 +19,9 @@ module WBench
       end
 
       latency.each do |key, value|
-        @latencies[key] ||= []
+        @latency[key] ||= []
 
-        @latencies[key] << value
+        @latency[key] << value
       end
 
       @app_server << app_server
@@ -66,7 +68,7 @@ module WBench
     end
 
     def latency_s
-      @latencies.map { |domain, values| RowFormatter.new(domain, values) }.join("\n")
+      @latency.map { |domain, values| RowFormatter.new(domain, values) }.join("\n")
     end
 
     def latency_heading_s
