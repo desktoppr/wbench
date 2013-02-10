@@ -9,6 +9,7 @@ module WBench
       end
 
       def result
+
         response = @http.request(@request)
 
         unless response.header['x-runtime'].nil?

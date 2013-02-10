@@ -1,12 +1,12 @@
 module WBench
   class RowFormatter
     def initialize(name, data)
-      @name = name
-      @data = data
+      @name  = name
+      @stats = Stats.new(data)
     end
 
     def to_s
-      if @data.compact.size == 0
+      if @stats.compact.size == 0
         name_s + no_result_s
       else
         name_s + fastest_s + median_s + slowest_s + std_dev_s
@@ -24,25 +24,19 @@ module WBench
     end
 
     def fastest_s
-      "#{@data.min}ms".ljust(10).colorize(:green)
+      "#{@stats.min}ms".ljust(10).colorize(:green)
     end
 
     def slowest_s
-      "#{@data.max}ms".ljust(10).colorize(:red)
+      "#{@stats.max}ms".ljust(10).colorize(:red)
     end
 
     def median_s
-      median = @data[ @data.length / 2 ]
-
-      "#{median}ms".ljust(10).colorize(:blue)
+      "#{@stats.median}ms".ljust(10).colorize(:blue)
     end
 
     def std_dev_s
-      sum = @data.inject(:+)
-      sample_variance = (1/@data.length.to_f*sum)
-      std_dev = Math.sqrt(sample_variance).to_i
-
-      "#{std_dev}ms".ljust(10).colorize(:yellow)
+      "#{@stats.std_dev}ms".ljust(10).colorize(:yellow)
     end
   end
 end
