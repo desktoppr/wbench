@@ -6,7 +6,7 @@ module WBench
       end
 
       def result
-        timing_json = JSON.parse(@browser.evaluate_script('JSON.stringify(window.performance.timing)'))
+        timing_json = @browser.evaluate_script('window.performance.timing')
 
         TimingHash.new(timing_json)
       end

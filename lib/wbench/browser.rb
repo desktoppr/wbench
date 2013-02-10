@@ -2,7 +2,14 @@ module WBench
   class Browser
     attr_accessor :url
 
-    def initialize(url)
+    def initialize(url, browser)
+      Capybara.register_driver(CAPYBARA_DRIVER) do |app|
+        http_client = Selenium::WebDriver::Remote::Http::Default.new
+        http_client.timeout = CAPYBARA_TIMEOUT
+
+        SeleniumDriver.new(app, :browser => browser.to_sym, :http_client => http_client)
+      end
+
       @url = url
     end
 

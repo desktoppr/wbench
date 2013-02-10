@@ -16,11 +16,16 @@ options = {}.tap do |options|
     opts.on("-l", "--loops [LOOPS]", Integer, "Set number of loops (default: #{WBench::DEFAULT_LOOPS})") do |loops|
       options[:loops] = loops
     end
+
+    opts.on("-b", "--browser [BROWSER]", "Set the web browser, chrome and firefox are available (default: #{WBench::DEFAULT_BROWSER})") do |browser|
+      options[:browser] = browser
+    end
+
   end.parse!
 end
 
 if url = ARGV[0]
-  puts WBench::Benchmark.run(url, options[:loops])
+  puts WBench::Benchmark.run(url, options)
 else
   abort 'Please provide a URL to benchmark'
 end

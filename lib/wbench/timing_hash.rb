@@ -1,16 +1,15 @@
 module WBench
   class TimingHash < Hash
-    def initialize(json)
+    def initialize(hash)
       # Remove 0 values as they indicate events that didn't occur
-      json = json.delete_if { |key, value| value == 0 }
+      hash = hash.delete_if { |key, value| value == 0 }
 
       # Grab the start time and offset the values against it.
-      # Also reverse the values here so that the start ones are first
-      start_time = json.min_by(&:last).last
+      start_time = hash.min_by(&:last).last
+      hash = hash.map { |key, value| [key, value - start_time] }
 
-      json.map { |key, value| [key, value - start_time] }.reverse.each do |key, value|
-        self[key] = value
-      end
+      # Order the results by value, lowest to highest
+      hash.sort_by(&:last).each { |key, value| self[key] = value }
     end
   end
 end

@@ -8,6 +8,15 @@ WBench is a tool that uses the HTML5 performance timing API to benchmark end use
 $ gem install wbench
 ```
 
+You will need to install [Google Chrome](http://www.google.com/chrome) as well as the chromedriver utility.
+You can install chromedriver (on OSX) with homebrew:
+
+```bash
+brew install chromedriver
+```
+
+Alternatively you can use firefox with the tool by specifying it on the command line. See [Running other browsers](#running-other-browsers)
+
 ## Usage
 
 ### Command Line
@@ -15,10 +24,18 @@ $ gem install wbench
 Simply enter the URL of a website you want to benchmark. The site will be loaded in the Chrome browser 10 times.
 
 ```bash
-$ wbench https://www.desktoppr.co/
+wbench https://www.desktoppr.co/
 ```
 
 ![Example Usage Output](https://github.com/desktoppr/wbench/raw/master/example.png)
+
+### Running other browsers
+
+Chrome is the default browser that is used. You can also use firefox by specifying it on the command line.
+
+```bash
+wbench -b firefox https://www.desktoppr.co/
+```
 
 ### Ruby API
 
@@ -29,7 +46,7 @@ optionally the amount of runs.
 
 require 'wbench'
 
-results = WBench::Benchmark.run('https://www.desktoppr.co/', 3) # => WBench::Results
+results = WBench::Benchmark.run('https://www.desktoppr.co/', :loops => 3, :browser => :chrome) # => WBench::Results
 
 results.app_server # =>
   [25, 24, 24]
@@ -55,4 +72,3 @@ results.latency # =>
 
 ## TODO
 - Add ability to [gist](https://gist.github.com/) results
-- Add ability to use different browsers (firefox and IE)
