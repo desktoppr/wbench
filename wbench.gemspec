@@ -12,6 +12,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Benchmark website loading times}
   gem.homepage      = ""
 
+  gem.add_dependency 'capybara'
   gem.add_dependency 'colorize'
 
   gem.files         = `git ls-files`.split($/)
