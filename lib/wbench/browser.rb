@@ -34,10 +34,11 @@ module WBench
     def wbench_javascript
       return @script if @script
 
-      directory = File.expand_path(File.dirname(__FILE__))
-      file = File.open(File.join(directory, 'wbench.js'))
+      directory = File.expand_path(File.dirname(__FILE__)) + '/../javascripts'
+      jquery    = File.open(File.join(directory, 'jquery.1.9.1.min.js'))
+      wbench    = File.open(File.join(directory, 'wbench.js'))
 
-      @script = file.read
+      @script = jquery.read + wbench.read
     end
   end
 end
