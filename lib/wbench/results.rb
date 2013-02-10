@@ -1,41 +1,41 @@
 module WBench
   class Results
     def initialize(url, loops)
-      @url           = url
-      @loops         = loops
-      @time          = Time.now.asctime
-      @timings       = {}
-      @latencies     = {}
-      @app_responses = []
+      @url         = url
+      @loops      = loops
+      @time       = Time.now.asctime
+      @browser    = {}
+      @latencies  = {}
+      @app_server = []
     end
 
-    def add(timing_hash, app_response, asset_latencies)
-      timing_hash.each do |key, value|
-        @timings[key] ||= []
+    def add(app_server, browser, latency)
+      browser.each do |key, value|
+        @browser[key] ||= []
 
-        @timings[key] << value
+        @browser[key] << value
       end
 
-      asset_latencies.each do |key, value|
+      latency.each do |key, value|
         @latencies[key] ||= []
 
         @latencies[key] << value
       end
 
-      @app_responses << app_response
+      @app_server << app_server
     end
 
     def to_s
       [ heading_s,
         spacer_s,
         app_heading_s,
-        app_response_s,
+        app_server_s,
         spacer_s,
         latency_heading_s,
-        asset_latencies_s,
+        latency_s,
         spacer_s,
         browser_heading_s,
-        timing_rows_s ].join
+        browser_rows_s ].join
     end
 
     private
@@ -57,15 +57,15 @@ module WBench
       "\n\n"
     end
 
-    def timing_rows_s
-      @timings.map { |timing, results| RowFormatter.new(Titleizer.new(timing).to_s, results) }.join("\n")
+    def browser_rows_s
+      @browser.map { |browser, results| RowFormatter.new(Titleizer.new(browser).to_s, results) }.join("\n")
     end
 
-    def app_response_s
-      RowFormatter.new('Total application time', @app_responses)
+    def app_server_s
+      RowFormatter.new('Total application time', @app_server)
     end
 
-    def asset_latencies_s
+    def latency_s
       @latencies.map { |domain, values| RowFormatter.new(domain, values) }.join("\n")
     end
 

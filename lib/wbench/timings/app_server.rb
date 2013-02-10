@@ -1,8 +1,8 @@
 module WBench
   module Timings
-    class App
-      def initialize(url)
-        uri = URI.parse(url)
+    class AppServer
+      def initialize(browser)
+        uri = URI.parse(browser.url)
         @http = Net::HTTP.new(uri.host, uri.port)
         @http.use_ssl = uri.scheme == 'https'
         @request = Net::HTTP::Get.new(uri.request_uri)

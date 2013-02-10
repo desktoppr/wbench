@@ -6,15 +6,16 @@ require 'colorize'
 require 'capybara'
 require 'selenium/webdriver'
 
-require 'wbench/version'
+require 'wbench/timings/app_server'
+require 'wbench/timings/browser'
+require 'wbench/timings/latency'
 require 'wbench/benchmark'
+require 'wbench/browser'
 require 'wbench/results'
 require 'wbench/timing_hash'
 require 'wbench/titleizer'
 require 'wbench/row_formatter'
-require 'wbench/timings/app'
-require 'wbench/timings/browser'
-require 'wbench/timings/latency'
+require 'wbench/version'
 
 module WBench
   CAPYBARA_DRIVER  = :wbench_browser

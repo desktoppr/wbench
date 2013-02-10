@@ -6,28 +6,33 @@ module WBench
 
     def initialize(url)
       @url = url
+      @browser = Browser.new(url)
     end
 
     def run(loops)
       @results = Results.new(@url, loops)
 
-      loops.times { @results.add(browser_timing, app_response_time, asset_latency_time) }
+      loops.times do
+        @browser.visit do
+          @results.add(app_server_results, browser_results, latency_results)
+        end
+      end
 
       @results
     end
 
     private
 
-    def browser_timing
-      Timings::Browser.new(@url).result
+    def app_server_results
+      Timings::AppServer.new(@browser).result
     end
 
-    def app_response_time
-      Timings::App.new(@url).result
+    def browser_results
+      Timings::Browser.new(@browser).result
     end
 
-    def asset_latency_time
-      Timings::Latency.new(@url).result
+    def latency_results
+      Timings::Latency.new(@browser).result
     end
   end
 end
