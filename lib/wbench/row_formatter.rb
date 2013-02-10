@@ -16,12 +16,7 @@ module WBench
     private
 
     def name_s
-      name = @name.to_s.dup
-      name.gsub!(/([a-z\d])([A-Z])/,'\1 \2')
-      name.gsub!(/\b('?[a-z])/) { $1.capitalize }
-      name.gsub!('Dom ', 'DOM ')
-      name = "#{name}:"
-      name.ljust(35)
+      @name.ljust(35)
     end
 
     def no_result_s
