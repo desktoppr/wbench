@@ -12,9 +12,10 @@ require 'wbench/timings/latency'
 require 'wbench/benchmark'
 require 'wbench/browser'
 require 'wbench/results'
+require 'wbench/results_formatter'
+require 'wbench/row_formatter'
 require 'wbench/timing_hash'
 require 'wbench/titleizer'
-require 'wbench/row_formatter'
 require 'wbench/version'
 
 module WBench
