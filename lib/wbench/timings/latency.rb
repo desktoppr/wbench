@@ -13,6 +13,8 @@ module WBench
 
       def latency_for(domain)
         (::Benchmark.measure { TCPSocket.new(domain, 80) }.real * 1000).to_i
+      rescue SocketError
+        nil
       end
 
       def domains
