@@ -1,8 +1,10 @@
 # WBench
 
-WBench is a tool that uses the HTML5 performance timing API to benchmark end user load times for websites.
+WBench is a tool that uses the HTML5 performance timing API to benchmark end user load times for websites. It simulates users visiting your website for the first time, with nothing of your site cached.
 
 ## Installation
+
+You can install the latest stable gem by running:
 
 ```bash
 $ gem install wbench
@@ -15,7 +17,7 @@ You can install chromedriver (on OSX) with homebrew:
 brew install chromedriver
 ```
 
-Alternatively you can use firefox with the tool by specifying it on the command line. See [Running other browsers](#running-other-browsers)
+Alternatively you can install firefox and use it with wbench. See [Running other browsers](#running-other-browsers) for more info.
 
 ## Usage
 
