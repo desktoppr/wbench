@@ -10,6 +10,12 @@ You can install the latest stable gem by running:
 $ gem install wbench
 ```
 
+If you're running an older version (1.8) of ruby, you'll need the JSON gem.
+
+```bash
+$ gem install json
+```
+
 You will need to install [Google Chrome](http://www.google.com/chrome) as well as the chromedriver utility.
 You can install chromedriver (on OSX) with homebrew:
 
