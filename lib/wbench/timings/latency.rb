@@ -18,7 +18,7 @@ module WBench
       end
 
       def domains
-        @domains ||= JSON.parse(@browser.evaluate_script('JSON.stringify(resourceURLs())')).map do |url|
+        @domains ||= JSON.parse(@browser.evaluate_script('jQuery.stringify(resourceURLs())')).map do |url|
           URI(url).host
         end.compact.uniq
       end
