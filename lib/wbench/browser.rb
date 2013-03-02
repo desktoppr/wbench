@@ -20,11 +20,9 @@ module WBench
 
     def visit
       session.visit(@url)
-      session.has_css?('body')
+      wait_for_page
       session.execute_script(wbench_javascript)
-
       yield if block_given?
-
       close
     end
 
@@ -52,6 +50,12 @@ module WBench
       wbench    = File.open(File.join(directory, 'wbench.js'))
 
       @script = jquery.read + stringify.read + wbench.read
+    end
+
+    def wait_for_page
+      Selenium::WebDriver::Wait.new(:timeout => CAPYBARA_TIMEOUT).until do
+        session.evaluate_script('document.readyState') == 'complete'
+      end
     end
   end
 end
