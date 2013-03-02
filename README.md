@@ -84,6 +84,3 @@ results.latency # =>
   "d1ros97qkrwjf5.cloudfront.net"=>[368, 14, 14],
   "ssl.google-analytics.com"=>[497, 14, 14], "www.desktoppr.co"=>[191, 210, 203]}
 ```
-
-## TODO
-- Add ability to [gist](https://gist.github.com/) results
