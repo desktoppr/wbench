@@ -84,3 +84,13 @@ results.latency # =>
   "d1ros97qkrwjf5.cloudfront.net"=>[368, 14, 14],
   "ssl.google-analytics.com"=>[497, 14, 14], "www.desktoppr.co"=>[191, 210, 203]}
 ```
+
+### Gisting results
+
+You can install the [Github gist gem](https://github.com/defunkt/gist) and pipe in the results of wbench
+
+```
+gem install gist
+
+wbench http://www.google.com.au/ | gist -d "Google homepage"
+```
