@@ -20,6 +20,14 @@ options = {}.tap do |options|
     opts.on("-b", "--browser [BROWSER]", "Set the web browser, chrome and firefox are available (default: #{WBench::DEFAULT_BROWSER})") do |browser|
       options[:browser] = browser
     end
+    
+    opts.on("-g", "--gist [GIST_NAME]", "Create a GitHub Gist from the results") do |gist|
+      options[:gist_name] = gist
+    end
+    
+    opts.on("-s", "--secret-gist", "Requires -g, Set GitHub Gist as Secret") do |secret|
+      options[:secret] = secret
+    end
 
   end.parse!
 end

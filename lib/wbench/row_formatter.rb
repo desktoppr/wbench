@@ -20,23 +20,28 @@ module WBench
     end
 
     def no_result_s
-      'Unable to be recorded'.center(40).colorize(:light_red)
+      print_with_color('Unable to be recorded'.center(40), :light_red)
     end
 
     def fastest_s
-      "#{@stats.min}ms".ljust(10).colorize(:green)
+      print_with_color("#{@stats.min}ms".ljust(10), :green)
     end
 
     def slowest_s
-      "#{@stats.max}ms".ljust(10).colorize(:red)
+      print_with_color("#{@stats.max}ms".ljust(10), :red)
     end
 
     def median_s
-      "#{@stats.median}ms".ljust(10).colorize(:blue)
+      print_with_color("#{@stats.median}ms".ljust(10), :blue)
     end
 
     def std_dev_s
-      "#{@stats.std_dev.to_i}ms".ljust(10).colorize(:yellow)
+      print_with_color("#{@stats.std_dev.to_i}ms".ljust(10), :yellow)
+    end
+    
+    def print_with_color(str, color)
+      # it no color is set, return without color
+      $NO_COLOR ? str : str.colorize(color)
     end
   end
 end
