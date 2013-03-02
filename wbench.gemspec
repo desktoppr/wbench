@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'capybara'
   gem.add_dependency 'colorize'
+  gem.add_dependency 'addressable'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

@@ -15,7 +15,7 @@ module WBench
         SeleniumDriver.new(app, opts)
       end
 
-      @url = url
+      @url = Addressable::URI.parse(url).normalize.to_s
     end
 
     def visit
