@@ -4,14 +4,13 @@ module WBench
 
     def initialize(url, options = {})
       browser = options[:browser] || DEFAULT_BROWSER
-      ua      = options[:ua]
 
       Capybara.register_driver(CAPYBARA_DRIVER) do |app|
         http_client = Selenium::WebDriver::Remote::Http::Default.new
         http_client.timeout = CAPYBARA_TIMEOUT
 
         opts = { :browser => browser.to_sym, :http_client => http_client }
-        opts[:args] = ["--user-agent='#{ua}'"] if ua
+        opts[:args] = ["--user-agent='#{options[:ua]}'"] if options[:ua]
 
         SeleniumDriver.new(app, opts)
       end

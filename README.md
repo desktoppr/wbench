@@ -37,12 +37,19 @@ wbench https://www.desktoppr.co/
 
 ![Example Usage Output](https://github.com/desktoppr/wbench/raw/master/example.png)
 
-### Running other browsers and user-agents
+### Running other browsers
 
-Chrome is the default browser that is used. You can also use firefox by specifying it on the command line. If `-u/--user-agent` is not passed, browsers' default user-agent value will be used.
+Chrome is the default browser that is used. You can also use firefox by specifying it on the command line.
 
 ```bash
-wbench -b firefox -u '... user-agent string ...' https://www.desktoppr.co/
+wbench -b firefox https://www.desktoppr.co/
+```
+
+### Setting the user agent
+You can also pass the `-u/--user-agent` option to change the browsers user agent (This can be useful for mobile testing).
+
+```bash
+wbench -u "Mozilla/5.0 (iPhone; U; ..." https://www.desktoppr.co/
 ```
 
 ### Ruby API
