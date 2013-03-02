@@ -49,15 +49,20 @@ module WBench
     end
 
     def latency_heading_s
-      "Host latency:\n".colorize(:yellow)
+      print_with_color("Host latency:\n", :yellow)
     end
 
     def browser_heading_s
-      "Browser performance:\n".colorize(:yellow)
+      print_with_color("Browser performance:\n", :yellow)
     end
 
     def app_heading_s
-      "Server performance:\n".colorize(:yellow)
+      print_with_color("Server performance:\n", :yellow)
+    end
+    
+    def print_with_color(str, color)
+      # it no color is set, return without color
+      $NO_COLOR ? str : str.colorize(color)
     end
   end
 end
