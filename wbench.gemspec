@@ -10,7 +10,8 @@ Gem::Specification.new do |gem|
   gem.email         = ["mario@mariovisic.com"]
   gem.description   = %q{WBench is a tool that uses the HTML5 performance timing API to benchmark end user load times for websites.}
   gem.summary       = %q{Benchmark website loading times}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/desktoppr/wbench"
+  gem.license       = "MIT"
 
   gem.add_dependency 'capybara'
   gem.add_dependency 'colorize'
