@@ -1,12 +1,12 @@
 module WBench
   class Benchmark
     def self.run(url, options = {})
-      new(url, options[:browser]).run(options[:loops] || DEFAULT_LOOPS)
+      new(url, options).run(options[:loops] || DEFAULT_LOOPS)
     end
 
-    def initialize(url, browser)
+    def initialize(url, options = {})
       @url = url
-      @browser = Browser.new(url, browser || DEFAULT_BROWSER)
+      @browser = Browser.new(url, options)
     end
 
     def run(loops)
