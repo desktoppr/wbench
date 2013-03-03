@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Add a list of sites to test here:
 
 def sites

@@ -3,8 +3,9 @@ module WBench
     class AppServer
       def initialize(browser)
         uri = Addressable::URI.parse(browser.url)
-        @http = Net::HTTP.new(uri.host, uri.port)
+        @http = Net::HTTP.new(uri.host, uri.inferred_port)
         @http.use_ssl = uri.scheme == 'https'
+
         @request = Net::HTTP::Get.new(uri.request_uri)
       end
 

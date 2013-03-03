@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 require File.expand_path(File.dirname(__FILE__)) + '/../support/test_sites'
-sites = @sites
 
 describe 'wbench' do
   sites.each do |site|
