@@ -3,16 +3,18 @@ module WBench
     attr_accessor :url
 
     def initialize(url, options = {})
-      browser = options[:browser] || DEFAULT_BROWSER
 
       Capybara.register_driver(CAPYBARA_DRIVER) do |app|
-        http_client = Selenium::WebDriver::Remote::Http::Default.new
+        http_client         = Selenium::WebDriver::Remote::Http::Default.new
         http_client.timeout = CAPYBARA_TIMEOUT
+        browser             = (options[:browser] || DEFAULT_BROWSER).to_sym
+        selenium_options    = { :browser => browser, :http_client => http_client }
 
-        opts = { :browser => browser.to_sym, :http_client => http_client }
-        opts[:args] = ["--user-agent='#{options[:ua]}'"] if options[:ua]
+        if options[:user_agent]
+          add_selenium_args(selenium_options, "--user-agent='#{options[:user_agent]}'")
+        end
 
-        SeleniumDriver.new(app, opts)
+        SeleniumDriver.new(app, selenium_options)
       end
 
       @url = Addressable::URI.parse(url).normalize.to_s
@@ -31,6 +33,11 @@ module WBench
     end
 
     private
+
+    def add_selenium_args(options, arg)
+      options[:args] ||= [ ]
+      options[:args] << arg
+    end
 
     def session
       @session ||= Capybara::Session.new(CAPYBARA_DRIVER)

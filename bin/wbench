@@ -21,8 +21,8 @@ options = {}.tap do |options|
       options[:browser] = browser
     end
 
-    opts.on("-u", "--user-agent [USER AGENT]", "Set the user-agent (default: browsers' default user-agent value)") do |ua|
-      options[:ua] = ua
+    opts.on("-u", "--user-agent [USER AGENT]", "Set the user-agent (default: browsers' default user-agent value)") do |user_agent|
+      options[:user_agent] = user_agent
     end
 
   end.parse!
