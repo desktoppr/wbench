@@ -52,11 +52,8 @@ module WBench
       return @script if @script
 
       directory = File.expand_path(File.dirname(__FILE__)) + '/../javascripts'
-      jquery    = File.open(File.join(directory, 'jquery.1.9.1.min.js'))
-      stringify = File.open(File.join(directory, 'jquery.stringify.js'))
       wbench    = File.open(File.join(directory, 'wbench.js'))
-
-      @script = jquery.read + stringify.read + wbench.read
+      @script   = wbench.read
     end
 
     def wait_for_page
