@@ -58,7 +58,7 @@ module WBench
 
     def wait_for_page
       Selenium::WebDriver::Wait.new(:timeout => CAPYBARA_TIMEOUT).until do
-        session.evaluate_script('document.readyState') == 'complete'
+        session.evaluate_script('window.performance.timing.loadEventEnd').to_i > 0
       end
     end
   end
