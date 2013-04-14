@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.license       = "MIT"
 
   gem.add_dependency 'capybara'
+  gem.add_dependency 'selenium-webdriver'
   gem.add_dependency 'colorize'
   gem.add_dependency 'addressable'
 
