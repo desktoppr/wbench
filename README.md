@@ -57,7 +57,7 @@ $ wbench -u "Mozilla/5.0 (iPhone; U; ..." https://www.desktoppr.co/
 You can programatically run the benchmarks. Simply specify the URL and
 optionally the amount of runs.
 
-```bash
+```ruby
 
 require 'wbench'
 
