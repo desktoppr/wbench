@@ -20,7 +20,7 @@ You will need to install [Google Chrome](http://www.google.com/chrome) as well a
 You can install chromedriver (on OSX) with homebrew:
 
 ```bash
-brew install chromedriver
+$ brew install chromedriver
 ```
 
 Alternatively you can install firefox and use it with wbench. See [Running other browsers](#running-other-browsers) for more info.
@@ -32,7 +32,7 @@ Alternatively you can install firefox and use it with wbench. See [Running other
 Simply enter the URL of a website you want to benchmark. The site will be loaded in the Chrome browser 10 times.
 
 ```bash
-wbench https://www.desktoppr.co/
+$ wbench https://www.desktoppr.co/
 ```
 
 ![Example Usage Output](https://github.com/desktoppr/wbench/raw/master/example.png)
@@ -42,14 +42,14 @@ wbench https://www.desktoppr.co/
 Chrome is the default browser that is used. You can also use firefox by specifying it on the command line.
 
 ```bash
-wbench -b firefox https://www.desktoppr.co/
+$ wbench -b firefox https://www.desktoppr.co/
 ```
 
 ### Setting the user agent
 You can also pass the `-u/--user-agent` option to change the browsers user agent (This can be useful for mobile testing).
 
 ```bash
-wbench -u "Mozilla/5.0 (iPhone; U; ..." https://www.desktoppr.co/
+$ wbench -u "Mozilla/5.0 (iPhone; U; ..." https://www.desktoppr.co/
 ```
 
 ### Ruby API
@@ -57,7 +57,7 @@ wbench -u "Mozilla/5.0 (iPhone; U; ..." https://www.desktoppr.co/
 You can programatically run the benchmarks. Simply specify the URL and
 optionally the amount of runs.
 
-```bash
+```ruby
 
 require 'wbench'
 
@@ -89,8 +89,8 @@ results.latency # =>
 
 You can install the [Github gist gem](https://github.com/defunkt/gist) and pipe in the results of wbench
 
-```
-gem install gist
+```bash
+$ gem install gist
 
-wbench http://www.google.com.au/ | gist -d "Google homepage"
+$ wbench http://www.google.com.au/ | gist -d "Google homepage"
 ```
