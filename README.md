@@ -52,6 +52,10 @@ You can also pass the `-u/--user-agent` option to change the browsers user agent
 $ wbench -u "Mozilla/5.0 (iPhone; U; ..." https://www.desktoppr.co/
 ```
 
+### Server performance measuring
+
+Server response times will be reported if the application is a ruby/rack application that returns the `X-Runtime` http header. Without that header the server performance will not be able to be measured.
+
 ### Ruby API
 
 You can programatically run the benchmarks. Simply specify the URL and
