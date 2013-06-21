@@ -9,9 +9,14 @@ module WBench
       @browser = Browser.new(url, options)
     end
 
+    def before_each(&blk)
+      @before_each = blk
+    end
+
     def run(loops)
       Results.new(@url, loops).tap do |results|
         loops.times do
+          @browser.run(&@before_each)
           @browser.visit { results.add(app_server_results, browser_results, latency_results) }
         end
       end

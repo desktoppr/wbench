@@ -61,11 +61,14 @@ Server response times will be reported if the application is a ruby/rack applica
 You can programatically run the benchmarks. Simply specify the URL and
 optionally the amount of runs.
 
+Here is an example of running a benchmark in chrome looping around 3 times.
+
 ```ruby
 
 require 'wbench'
 
-results = WBench::Benchmark.run('https://www.desktoppr.co/', :loops => 3, :browser => :chrome) # => WBench::Results
+benchmark = WBench::Benchmark.new('https://www.desktoppr.co/', :browser => :chrome)
+results   = benchmark.run(3) # => WBench::Results
 
 results.app_server # =>
   [25, 24, 24]
@@ -88,6 +91,31 @@ results.latency # =>
   "d1ros97qkrwjf5.cloudfront.net"=>[368, 14, 14],
   "ssl.google-analytics.com"=>[497, 14, 14], "www.desktoppr.co"=>[191, 210, 203]}
 ```
+
+### Benchmarking authenticated pages
+
+Benchmarking authenticated pages is possible using the ruby API. The API
+provides direct access to the selenium session. The session allows us to visit
+a login page before our test page, for example:
+
+```ruby
+require 'wbench'
+
+benchmark = WBench::Benchmark.new('https://www.desktoppr.co/dashboard', :browser => :chrome)
+benchmark.before_each do
+  visit 'https://www.desktoppr.co/login'
+  fill_in 'Login', :with => 'mario'
+  fill_in 'Password', :with => 'super secret'
+  click_button 'Log In'
+end
+
+results = benchmark.run(3) # => WBench::Results
+```
+
+Please note that by visiting pages before each run, your browser may cache some
+assets. This means that when the benchmark is run against the authenticated
+page, some assets may be loaded from the cache, and the result may appear
+quicker than an uncahed visit.
 
 ### Gisting results
 

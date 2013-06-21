@@ -3,7 +3,6 @@ module WBench
     attr_accessor :url
 
     def initialize(url, options = {})
-
       Capybara.register_driver(CAPYBARA_DRIVER) do |app|
         http_client         = Selenium::WebDriver::Remote::Http::Default.new
         http_client.timeout = CAPYBARA_TIMEOUT
@@ -30,6 +29,10 @@ module WBench
 
     def evaluate_script(script)
       session.evaluate_script(script)
+    end
+
+    def run(&blk)
+      session.instance_eval(&blk) if block_given?
     end
 
     private
