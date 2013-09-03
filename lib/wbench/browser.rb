@@ -22,10 +22,21 @@ module WBench
         SeleniumDriver.new(app, selenium_options)
       end
 
-      @url = Addressable::URI.parse(url).normalize.to_s
+      parsed_url = Addressable::URI.parse(url)
+      @url = parsed_url.normalize.to_s
+      if options[:cookie]
+        parsed_url.path = ''
+        @root_url = parsed_url.normalize.to_s
+        @cookie = options[:cookie]
+      end
     end
 
     def visit
+      if @cookie
+        session.visit(@root_url)
+        session.execute_script("document.cookie = '#{@cookie}'")
+      end
+
       session.visit(@url)
       wait_for_page
       session.execute_script(wbench_javascript)

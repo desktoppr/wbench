@@ -69,10 +69,10 @@ $ wbench -u "Mozilla/5.0 (iPhone; U; ..." https://www.desktoppr.co/
 By default the output will be in color. Piping the results to another process
 should correctly remove the coloring. If your terminal doesn't output color, or
 you're getting funny symbols in your results then you can remove color from the
-output using the `-c` flag.
+output using the `-nc` flag.
 
 ```bash
-$ wbench -c https://www.desktoppr.co/
+$ wbench -nc https://www.desktoppr.co/
 ```
 
 ### Server performance measuring
