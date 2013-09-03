@@ -25,6 +25,10 @@ options = {}.tap do |options|
       options[:user_agent] = user_agent
     end
 
+    opts.on("-c", "--cookie [COOKIE]", "Set the cookie (default: browsers' default cookie value)") do |cookie|
+      options[:cookie] = cookie
+    end
+
   end.parse!
 end
 
