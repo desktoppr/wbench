@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WBench::Stats do
   describe '#median' do
     context 'when there are an odd number of results' do
