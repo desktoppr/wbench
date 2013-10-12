@@ -6,20 +6,21 @@ module WBench
       end
 
       def result
-        Hash[domains.map { |domain| [domain, latency_for(domain) ] }.sort]
+        Hash[hosts.map { |host| [host.join(":"), latency_for(*host) ] }.sort]
       end
 
       private
 
-      def latency_for(domain)
-        (::Benchmark.measure { TCPSocket.new(domain, 80) }.real * 1000).to_i
+      def latency_for(hostname, port)
+        (::Benchmark.measure { TCPSocket.new(hostname, port) }.real * 1000).to_i
       rescue SocketError
         nil
       end
 
-      def domains
-        @domains ||= JSON.parse(@browser.evaluate_script('WBench.resourceURLs()')).map do |url|
-          Addressable::URI.parse(url).host
+      def hosts
+        @hosts ||= JSON.parse(@browser.evaluate_script('WBench.resourceURLs()')).map do |url|
+          u = Addressable::URI.parse(url)
+          [u.host, u.inferred_port]
         end.compact.uniq
       end
     end

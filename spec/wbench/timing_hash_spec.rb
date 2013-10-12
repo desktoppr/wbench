@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WBench::TimingHash do
   describe '#new' do
     let(:timings) { { :end => 20, :middle => 15, :start => 10, :nope => 0 } }

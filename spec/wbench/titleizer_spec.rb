@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe WBench::Titleizer do
   describe '#to_s' do
     subject { described_class.new('dom loading time') }
