@@ -28,5 +28,4 @@ module WBench
   CAPYBARA_TIMEOUT = 60
   DEFAULT_LOOPS    = 10
   DEFAULT_BROWSER  = :chrome
-  COLORING_DISABLED = :false
 end
