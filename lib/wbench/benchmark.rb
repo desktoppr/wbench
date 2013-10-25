@@ -1,4 +1,4 @@
-module WBench
+module WBench  
   class Benchmark
     def self.run(url, options = {})
       new(url, options).run(options[:loops] || DEFAULT_LOOPS)
@@ -6,6 +6,7 @@ module WBench
 
     def initialize(url, options = {})
       @url = url
+      WBench.no_color = options[:no_color]
       @browser = Browser.new(url, options)
     end
 

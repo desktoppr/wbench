@@ -25,6 +25,11 @@ options = {}.tap do |options|
       options[:user_agent] = user_agent
     end
 
+    options[:no_color] = false
+    opts.on("-C", "--no-color", "Disable coloring when outputting the report") do
+      options[:no_color] = true
+    end
+
   end.parse!
 end
 

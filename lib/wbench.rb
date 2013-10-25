@@ -13,6 +13,7 @@ require 'wbench/timings/browser'
 require 'wbench/timings/latency'
 require 'wbench/benchmark'
 require 'wbench/browser'
+require 'wbench/colorout'
 require 'wbench/selenium_driver'
 require 'wbench/results'
 require 'wbench/results_formatter'
@@ -27,4 +28,5 @@ module WBench
   CAPYBARA_TIMEOUT = 60
   DEFAULT_LOOPS    = 10
   DEFAULT_BROWSER  = :chrome
+  COLORING_DISABLED = :false
 end
