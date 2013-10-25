@@ -49,15 +49,15 @@ module WBench
     end
 
     def latency_heading_s
-      "Host latency:\n".colorize(:yellow)
+      "Host latency:\n".colorout(:yellow)
     end
 
     def browser_heading_s
-      "Browser performance:\n".colorize(:yellow)
+      "Browser performance:\n".colorout(:yellow)
     end
 
     def app_heading_s
-      "Server performance:\n".colorize(:yellow)
+      "Server performance:\n".colorout(:yellow)
     end
   end
 end
