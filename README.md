@@ -52,6 +52,15 @@ You can also pass the `-u/--user-agent` option to change the browsers user agent
 $ wbench -u "Mozilla/5.0 (iPhone; U; ..." https://www.desktoppr.co/
 ```
 
+### Color output
+
+By default the output will be in color. Piping the results to another process
+should correctly remove the coloring. If your terminal doesn't output color, or
+you're getting funny symbols in your results then you can remove color from the
+output using the `-c` flag.
+
+$ wbench https://www.desktoppr.co/ -c
+
 ### Server performance measuring
 
 Server response times will be reported if the application is a ruby/rack application that returns the `X-Runtime` http header. Without that header the server performance will not be able to be measured.
