@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(dir) unless $LOAD_PATH.include?(dir)
 require 'wbench'
 require 'optparse'
 
-options = {}.tap do |options|
+options = { :no_color => false }.tap do |options|
   OptionParser.new do |opts|
     opts.version = WBench::VERSION
     opts.banner  = 'Usage: wbench url [options]'
@@ -25,11 +25,9 @@ options = {}.tap do |options|
       options[:user_agent] = user_agent
     end
 
-    options[:no_color] = false
-    opts.on("-C", "--no-color", "Disable coloring when outputting the report") do
+    opts.on("-c", "--no-color", "Disable coloring when outputting the report") do
       options[:no_color] = true
     end
-
   end.parse!
 end
 
