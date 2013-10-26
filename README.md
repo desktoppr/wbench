@@ -59,7 +59,9 @@ should correctly remove the coloring. If your terminal doesn't output color, or
 you're getting funny symbols in your results then you can remove color from the
 output using the `-c` flag.
 
+```bash
 $ wbench https://www.desktoppr.co/ -c
+```
 
 ### Server performance measuring
 
