@@ -60,7 +60,7 @@ you're getting funny symbols in your results then you can remove color from the
 output using the `-c` flag.
 
 ```bash
-$ wbench https://www.desktoppr.co/ -c
+$ wbench -c https://www.desktoppr.co/
 ```
 
 ### Server performance measuring
