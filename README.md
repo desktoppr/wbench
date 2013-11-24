@@ -23,6 +23,18 @@ You can install chromedriver (on OSX) with homebrew:
 $ brew install chromedriver
 ```
 
+If you are not using Homebrew on OSX, download the latest binary version of [chromedriver](http://chromedriver.storage.googleapis.com/index.html).
+Then unpack the ZIP archive and copy the chromedriver binary to the /usr/bin directory:
+```bash
+$ sudo cp /location/of/chromedriver/binary /usr/bin
+```
+Test that chromedriver is working by typing "chromedriver":
+```bash
+$ chromedriver
+Starting ChromeDriver (v2.7.236836) on port 9515
+```
+Note that you will NOT need the chromedriver-utility gem if you install the binary in this manner.
+
 Alternatively you can install firefox and use it with wbench. See [Running other browsers](#running-other-browsers) for more info.
 
 ## Usage
