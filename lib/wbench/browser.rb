@@ -10,7 +10,7 @@ module WBench
         selenium_options    = { :browser => browser, :http_client => http_client }
 
         if options[:user_agent]
-          add_selenif browser == :firefox
+          if browser == :firefox
             profile = Selenium::WebDriver::Firefox::Profile.new
             profile['general.useragent.override'] = options[:user_agent]
             selenium_options[:profile] = profile
