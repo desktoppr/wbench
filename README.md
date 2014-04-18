@@ -165,9 +165,9 @@ skewing your results for the actual page load.
 
 The cookie format is the same used for curl, so an example might be
 
-```
+```bash
 $ wbench -c "session_id=4000; theme=blue" https://www.desktoppr.co/wallpapers
-
+```
 
 ### Custom event timings
 
