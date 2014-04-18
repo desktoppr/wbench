@@ -152,6 +152,21 @@ assets. This means that when the benchmark is run against the authenticated
 page, some assets may be loaded from the cache, and the result may appear
 quicker than an uncahed visit.
 
+
+### Custom event timings
+
+Custom events are available to instrument through wbench. To do so use the native HTML5 function `window.performance.mark` like so:
+
+```javascript
+  if(typeof(window.performance) === 'object' && typeof(window.performance.mark) == 'function') {
+    window.performance.mark('my custom event');
+  }
+
+```
+
+You can use the `onload` event handler to call the JavaScript above to instrument when certain elements (images for example) are loaded. Currently this only works in google chrome, so we need to protect against the function not being available.
+
+
 ### Gisting results
 
 You can install the [Github gist gem](https://github.com/defunkt/gist) and pipe in the results of wbench

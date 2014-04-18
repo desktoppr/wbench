@@ -12,7 +12,7 @@ module WBench
       private
 
       def timing_json
-        @browser.evaluate_script('window.performance.timing')
+        @browser.evaluate_script('WBench.performanceTimings()')
       end
     end
   end
