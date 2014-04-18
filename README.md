@@ -158,10 +158,9 @@ quicker than an uncahed visit.
 Custom events are available to instrument through wbench. To do so use the native HTML5 function `window.performance.mark` like so:
 
 ```javascript
-  if(typeof(window.performance) === 'object' && typeof(window.performance.mark) == 'function') {
-    window.performance.mark('my custom event');
-  }
-
+if(typeof(window.performance) === 'object' && typeof(window.performance.mark) == 'function') {
+  window.performance.mark('my custom event');
+}
 ```
 
 You can use the `onload` event handler to call the JavaScript above to instrument when certain elements (images for example) are loaded. Currently this only works in google chrome, so we need to protect against the function not being available.
