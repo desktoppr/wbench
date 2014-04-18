@@ -69,10 +69,10 @@ $ wbench -u "Mozilla/5.0 (iPhone; U; ..." https://www.desktoppr.co/
 By default the output will be in color. Piping the results to another process
 should correctly remove the coloring. If your terminal doesn't output color, or
 you're getting funny symbols in your results then you can remove color from the
-output using the `-c` flag.
+output using the `-nc` flag.
 
 ```bash
-$ wbench -c https://www.desktoppr.co/
+$ wbench -nc https://www.desktoppr.co/
 ```
 
 ### Server performance measuring
@@ -151,6 +151,22 @@ Please note that by visiting pages before each run, your browser may cache some
 assets. This means that when the benchmark is run against the authenticated
 page, some assets may be loaded from the cache, and the result may appear
 quicker than an uncahed visit.
+
+
+### Setting cookies
+
+You can pass the `-c` flag to wbench to set a cookie before benchmarking the
+page, this can be used similarly with the method listed above for testing
+authenticated pages, as well as any other cookies you would like the browser to use.
+
+One problem with this approach is that we have to visit the homepage before
+setting the cookie, this means that some assets may be cached during the visit,
+skewing your results for the actual page load.
+
+The cookie format is the same used for curl, so an example might be
+
+```
+$ wbench -c "session_id=4000; theme=blue" https://www.desktoppr.co/wallpapers
 
 
 ### Custom event timings
