@@ -153,6 +153,22 @@ page, some assets may be loaded from the cache, and the result may appear
 quicker than an uncahed visit.
 
 
+### Setting cookies
+
+You can pass the `-c` flag to wbench to set a cookie before benchmarking the
+page, this can be used similarly with the method listed above for testing
+authenticated pages, as well as any other cookies you would like the browser to use.
+
+One problem with this approach is that we have to visit the homepage before
+setting the cookie, this means that some assets may be cached during the visit,
+skewing your results for the actual page load.
+
+The cookie format is the same used for curl, so an example might be
+
+```
+$ wbench -c "session_id=4000; theme=blue" https://www.desktoppr.co/wallpapers
+
+
 ### Custom event timings
 
 Custom events are available to instrument through wbench. To do so use the native HTML5 function `window.performance.mark` like so:
