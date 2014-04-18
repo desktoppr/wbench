@@ -22,21 +22,12 @@ module WBench
         SeleniumDriver.new(app, selenium_options)
       end
 
-      parsed_url = Addressable::URI.parse(url)
-      @url = parsed_url.normalize.to_s
-      if options[:cookie]
-        parsed_url.path = ''
-        @root_url = parsed_url.normalize.to_s
-        @cookie = options[:cookie]
-      end
+      @url           = Addressable::URI.parse(url).normalize.to_s
+      @cookie_string = options[:cookie]
     end
 
     def visit
-      if @cookie
-        session.visit(@root_url)
-        session.execute_script("document.cookie = '#{@cookie}'")
-      end
-
+      set_cookies
       session.visit(@url)
       wait_for_page
       session.execute_script(wbench_javascript)
@@ -80,6 +71,10 @@ module WBench
       Selenium::WebDriver::Wait.new(:timeout => CAPYBARA_TIMEOUT).until do
         session.evaluate_script('window.performance.timing.loadEventEnd').to_i > 0
       end
+    end
+
+    def set_cookies
+      WBench::Cookies.set(session, url, @cookie_string)
     end
   end
 end
