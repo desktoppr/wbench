@@ -4,17 +4,17 @@ describe WBench::TimingHash do
     subject { described_class.new(timings) }
 
     it 'removes keys with a value of 0' do
-      subject.should_not have_key :nope
+      expect(subject).not_to have_key :nope
     end
 
     it 'offsets each value by the starting(lowest) value' do
-      subject[:start].should == 0
-      subject[:middle].should == 5
-      subject[:end].should == 10
+      expect(subject[:start]).to eq(0)
+      expect(subject[:middle]).to eq(5)
+      expect(subject[:end]).to eq(10)
     end
 
     it 'orders the hash by value, lowest first' do
-      subject.first.should == [:start, 0]
+      expect(subject.first).to eq([:start, 0])
     end
   end
 end
