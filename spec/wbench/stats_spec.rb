@@ -4,7 +4,7 @@ describe WBench::Stats do
       subject(:stats) { described_class.new([1,6,2,8,3]) }
 
       it 'returns the middle result' do
-        stats.median.should == 3
+        expect(stats.median).to eq(3)
       end
     end
 
@@ -12,7 +12,7 @@ describe WBench::Stats do
       subject(:stats) { described_class.new([1,6,2,8,3,9]) }
 
       it 'returns the higher of the two middle values' do
-        stats.median.should == 6
+        expect(stats.median).to eq(6)
       end
     end
   end
@@ -20,24 +20,36 @@ describe WBench::Stats do
   describe '#sum' do
     subject(:stats) { described_class.new([2,4,4,4,5,5,7,9]) }
 
-    its(:sum) { should == 40 } # see: http://en.wikipedia.org/wiki/Standard_deviation
+    describe '#sum' do
+      subject { super().sum }
+      it { is_expected.to eq(40) }
+    end # see: http://en.wikipedia.org/wiki/Standard_deviation
   end
 
   describe '#mean' do
     subject(:stats) { described_class.new([2,4,4,4,5,5,7,9]) }
 
-    its(:mean) { should == 5 } # see: http://en.wikipedia.org/wiki/Standard_deviation
+    describe '#mean' do
+      subject { super().mean }
+      it { is_expected.to eq(5) }
+    end # see: http://en.wikipedia.org/wiki/Standard_deviation
   end
 
   describe '#sample_variance' do
     subject(:stats) { described_class.new([2,4,4,4,5,5,7,9]) }
 
-    its(:sample_variance) { should == 4 } # see: http://en.wikipedia.org/wiki/Standard_deviation
+    describe '#sample_variance' do
+      subject { super().sample_variance }
+      it { is_expected.to eq(4) }
+    end # see: http://en.wikipedia.org/wiki/Standard_deviation
   end
 
   describe '#std_dev' do
     subject(:stats) { described_class.new([2,4,4,4,5,5,7,9]) }
 
-    its(:std_dev) { should == 2 } # see: http://en.wikipedia.org/wiki/Standard_deviation
+    describe '#std_dev' do
+      subject { super().std_dev }
+      it { is_expected.to eq(2) }
+    end # see: http://en.wikipedia.org/wiki/Standard_deviation
   end
 end
