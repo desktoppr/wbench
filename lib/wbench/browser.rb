@@ -19,6 +19,7 @@ module WBench
           end
         end
 
+        add_selenium_args(selenium_options, "--enable-precise-memory-info")
         SeleniumDriver.new(app, selenium_options)
       end
 
@@ -30,6 +31,9 @@ module WBench
       set_cookies
       session.visit(@url)
       wait_for_page
+    end
+
+    def done
       session.execute_script(wbench_javascript)
       yield if block_given?
       close

@@ -12,9 +12,12 @@ module WBench
     end
 
     def add(app_server, browser, latency)
-      browser.each do |key, value|
-        @browser[key] ||= []
-        @browser[key] << value
+      browser.each do |type, value|
+        value.each do |key, value|
+          @browser[type] = {} if @browser[type].nil?
+          @browser[type][key] ||= []
+          @browser[type][key] << value
+        end
       end
 
       latency.each do |key, value|

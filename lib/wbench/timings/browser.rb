@@ -6,13 +6,20 @@ module WBench
       end
 
       def result
-        TimingHash.new(timing_json)
+        {
+          timing: TimingHash.new(timing_json),
+          memory: MemoryHash.new(memory_json)
+        }
       end
 
       private
 
       def timing_json
         @browser.evaluate_script('WBench.performanceTimings()')
+      end
+
+      def memory_json
+        @browser.evaluate_script('WBench.performanceMemory()')
       end
     end
   end

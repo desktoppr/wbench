@@ -1,7 +1,7 @@
 module WBench
   class Titleizer
     def initialize(title)
-      @title = title.dup
+      @title = title.to_s.dup
     end
 
     def to_s

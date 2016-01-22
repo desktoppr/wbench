@@ -13,11 +13,13 @@ module WBench
       @before_each = blk
     end
 
-    def run(loops)
+    def run(loops, &blk)
       Results.new(@url, loops).tap do |results|
         loops.times do
           @browser.run(&@before_each)
-          @browser.visit { results.add(app_server_results, browser_results, latency_results) }
+          @browser.visit
+          @browser.run(&blk) if blk
+          @browser.done { results.add(app_server_results, browser_results, latency_results) }
         end
       end
     end
