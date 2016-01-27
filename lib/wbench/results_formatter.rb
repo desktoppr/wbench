@@ -56,6 +56,7 @@ module WBench
     end
 
     def memory_rows_s
+      return ColoredString.new("not supported in this browser", :red) if @results.browser[:memory].empty?
       @results.browser[:memory].map { |browser, results| MemoryRowFormatter.new(Titleizer.new(browser).to_s, results) }.join("\n")
     end
 
