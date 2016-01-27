@@ -19,7 +19,7 @@ module WBench
           end
         end
 
-        add_selenium_args(selenium_options, "--enable-precise-memory-info")
+        add_selenium_args(selenium_options, "--enable-precise-memory-info") if browser === :chrome
         SeleniumDriver.new(app, selenium_options)
       end
 
