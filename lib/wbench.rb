@@ -7,6 +7,7 @@ require 'colorize'
 require 'capybara'
 require 'addressable/uri'
 require 'selenium/webdriver'
+require 'ruby-progressbar'
 
 require 'wbench/timings/app_server'
 require 'wbench/timings/browser'

@@ -14,12 +14,14 @@ module WBench
     end
 
     def run(loops, &blk)
+      @bar = ProgressBar.create(:format => '%a |%b>>%i| %p%% %t', :total => loops)
       Results.new(@url, loops).tap do |results|
         loops.times do
           @browser.run(&@before_each)
           @browser.visit
           @browser.run(&blk) if blk
           @browser.done { results.add(app_server_results, browser_results, latency_results) }
+          @bar.increment
         end
       end
     end
