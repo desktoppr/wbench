@@ -13,6 +13,9 @@ module WBench
         latency_heading_s,
         latency_s,
         spacer_s,
+        memory_heading_s,
+        memory_rows_s,
+        spacer_s,
         browser_heading_s,
         browser_rows_s ].join
     end
@@ -37,21 +40,29 @@ module WBench
     end
 
     def browser_rows_s
-      @results.browser.map { |browser, results| RowFormatter.new(Titleizer.new(browser).to_s, results) }.join("\n")
+      @results.browser[:timing].map { |browser, results| TimingRowFormatter.new(Titleizer.new(browser).to_s, results) }.join("\n")
     end
 
     def app_server_s
-      RowFormatter.new('Total application time', @results.app_server)
+      TimingRowFormatter.new('Total application time', @results.app_server)
     end
 
     def latency_s
-      @results.latency.map { |domain, values| RowFormatter.new(domain, values) }.join("\n")
+      @results.latency.map { |domain, values| TimingRowFormatter.new(domain, values) }.join("\n")
     end
 
     def latency_heading_s
       ColoredString.new("Host latency:\n", :yellow)
     end
 
+    def memory_rows_s
+      return ColoredString.new("not supported in this browser", :red) if @results.browser[:memory].empty?
+      @results.browser[:memory].map { |browser, results| MemoryRowFormatter.new(Titleizer.new(browser).to_s, results) }.join("\n")
+    end
+
+    def memory_heading_s
+      ColoredString.new("Host memory:\n", :yellow)
+    end
     def browser_heading_s
       ColoredString.new("Browser performance:\n", :yellow)
     end

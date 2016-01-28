@@ -1,5 +1,5 @@
 module WBench
-  class RowFormatter
+  class TimingRowFormatter
     def initialize(name, data)
       @name  = name
       @stats = Stats.new(data)
