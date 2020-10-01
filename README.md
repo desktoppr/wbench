@@ -1,4 +1,4 @@
-# WBench
+# WBench-A project
 
 WBench is a tool that uses the HTML5 performance timing API to benchmark end user load times for websites. It simulates users visiting your website for the first time, with nothing of your site cached.
 
