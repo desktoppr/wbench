@@ -1,4 +1,4 @@
-# WBench
+# WBench -An amazing project
 
 WBench is a tool that uses the HTML5 performance timing API to benchmark end user load times for websites. It simulates users visiting your website for the first time, with nothing of your site cached.
 
@@ -190,4 +190,8 @@ You can install the [Github gist gem](https://github.com/defunkt/gist) and pipe 
 $ gem install gist
 
 $ wbench http://www.google.com.au/ | gist -d "Google homepage"
+
+
 ```
+This is a project for demonstration purpose, you can use it in real life scenarios. 
+Thank you.
