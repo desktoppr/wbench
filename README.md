@@ -10,7 +10,7 @@ You can install the latest stable gem by running:
 $ gem install wbench
 ```
 
-If you're running an older version (1.8) of ruby, you'll need the JSON gem.
+If you are running an older version (1.8) of ruby, you may need the JSON gem.
 
 ```bash
 $ gem install json
